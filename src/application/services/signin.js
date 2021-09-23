@@ -1,39 +1,42 @@
 
-// export const RequestHandler = {
-//     signin,
-//     signout 
-// }
-    export function signinApi(username, password) {
-        const requestOptions = {
-            method: 'GET',
-            headers : { 'Content-Type': 'application/json' ,'Accept': 'application/json'},
-            //body: JSON.stringify({ username, password })
-        };
-    
-        // return fetch('http://localhost:9000/login?userName=lnarayana@italentdigital.com&password=USF3MmUzcjQ=',requestOptions)
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then(data => { 
-        //         console.log('text ' + data.status); 
-        //         return data; })
-        //         .catch(error => {                  
-        //         console.log(error);
-        //    });
-           return fetch(`http://localhost:9000/login?userName=lnarayana@italentdigital.com&password=USF3MmUzcjQ=`)
-           .then(response => response.json())
-           .then(
-             data =>{
-             console.log('text ' + data.response.id)
-             return data;}
-           )
-    }
+
+
+
+    // export function signinApi(username, password) {
+    //     const requestOptions = {
+    //         method: 'GET',
+    //         headers : { 'Content-Type': 'application/json' ,'Accept': 'application/json'},
+    //         //body: JSON.stringify({ username, password })
+    //     };
+    //        return fetch(`${REACT_APP_HOST_URL}/login?userName=lnarayana@italentdigital.com&password=USF3MmUzcjQ=`)
+    //        .then(response => response.json())
+    //        .then(
+    //          data =>{
+    //          console.log('text ' + data.response.id)
+    //          return data;}
+    //        )
+    // }
 
 
 // let requestHandler = new RequestHandler();
 
 // export default requestHandler;
 
+import {getData} from '../utils/requesthandler'
+
+const {REACT_APP_HOST_URL} = process.env;
+
+export function signinApi(username,password){
+    return new Promise((resolve,reject)=>{
+        getData({url:`${REACT_APP_HOST_URL}/login?userName=${username}&password=${password}`})
+        .then((response)=>{
+          resolve(handleResponse(response));
+        })
+        .catch((error)=>{
+          reject(error);
+        })
+      })
+  }
 
 
 
@@ -43,22 +46,19 @@ export function signout() {
 }
 
 function handleResponse(response) {
-    console.log(response.json());
-    return response.json().then(text => {
-        const data = text && JSON.parse(text);
+    console.log(response);
+        const data = response;
         console.log("data " + data);
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                signout();
-                // eslint-disable-next-line no-restricted-globals
-                location.reload(true);
+
+            if (response.status === true ) {
+               return response;
+            } else{
+                const error = (data && data.message) || response.statusText;
+                return Promise.reject(error);
             }
 
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
+            
+        
 
         return data;
-    });
 }

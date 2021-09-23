@@ -24,7 +24,7 @@ export function signin(username, password) {
         dispatch(alertActions.success('Registration successful'));
       },
         error => {
-          //dispatch(failure(error.toString()));
+          dispatch(failure(error.toString()));
           dispatch(alertActions.error(error.toString()));
         }
       );
@@ -32,7 +32,7 @@ export function signin(username, password) {
 
   function request(user) { return { type: userConstants.LOGIN_REQUEST, user } }
   function success(user) { return { type: userConstants.LOGIN_SUCCESS, user } }
-  //function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
+  function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 };
 
 export function signout() {

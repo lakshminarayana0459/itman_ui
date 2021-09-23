@@ -2,7 +2,7 @@ import { userConstants } from '../constants/user';
 
 let user = JSON.parse(localStorage.getItem('user'));
 //const initialState = user ? { loggedIn: false, user } : {};
-const initialState = { loggedIn: false, user, input : "lakshminarayana" } ;
+const initialState = { loggedIn: false, user } ;
 
 
 export default function signin(state = initialState, action) {
@@ -19,9 +19,13 @@ export default function signin(state = initialState, action) {
         user: action.user
       };
     case userConstants.LOGIN_FAILURE:
-      return {};
+      return {
+        loggedIn: false
+      };
     case userConstants.LOGOUT:
-      return {};
+      return {
+        loggedIn: false
+      };
     default:
       return state
   }

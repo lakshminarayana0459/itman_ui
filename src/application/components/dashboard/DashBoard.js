@@ -1,25 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./DashBoard.css";
 
-class DashBoard extends React.Component {
-
-    render() {
-        return (
-            <div className="dashboard">
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-                <h6 style={{ color: "red" }}> Dashboard </h6>
-            </div>
-
-        )
-    }
-
+const DashBoard = (props) => {
+                return (
+                    <h1>dashboard</h1>
+                )
 }
 
 export default DashBoard;
