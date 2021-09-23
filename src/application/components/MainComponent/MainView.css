@@ -1,0 +1,13 @@
+.main-view {
+    width: 100%; 
+    float: right;
+    display: flex;
+  }
+
+  .main-view.open {
+    width: calc(100% - 250px);
+  }
+  
+  .main-view.close {
+    width: calc(100% - 80px);
+  }

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { store } from '../src/application/helper/store';
 import { Provider } from 'react-redux'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Root = ({ store }) => (
   <Provider store={store}>

@@ -16,7 +16,7 @@ const checkIfAuthed = (store) => {
   const state = store.getState();
   console.log(" login status" + state.signin.loggedIn);
   return true;
-  //state.signin.loggedIn;
+  //return state.signin.loggedIn;
 };
 
 

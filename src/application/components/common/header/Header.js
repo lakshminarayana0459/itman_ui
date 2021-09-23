@@ -1,24 +1,34 @@
 import React from 'react';
-import './Header.css'; 
+import './Header.css';
 
 const header = props => {
-    // eslint-disable-next-line no-useless-constructor
-    // constructor(props) {
-    //     super(props);
-    // }
+    
+    return (
+        <nav className="header">
+            <div className="header__left">
+            <button
+              className="header__logo"
+            >
+                <h6>hello</h6>
+            </button>
+            </div>
 
-// render(){
-    return(
-            <nav className="header">
-            <button className="btn shadow-sml menu-button header__logo"
-                 onClick={ props.drawerClickHandler }
-         >
-        <i className="fa fa-bars"></i>
-             </button>
-            {/* <button onClick={this.props.drawerToggleClickHandler}> button</button> */}
-            </nav>
+            <div className="header__center">
+        <div className="searchbar">
+          <input
+            placeholder="Search for friend, post or video"
+            className="searchInput"
+          />
+        </div>
+      </div>
+
+      <div className="headerr__ight">
+        <h6>kjsdckds</h6>
+      </div>
+            
+        </nav>
     )
-// }
+    // }
 }
 
 export default header;
